@@ -1,0 +1,15 @@
+﻿@page "/"
+@inject BlazorServer.Data.FileService fileService
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<InputImg OnSelectedImage="@((string base64) => imageBase64 = base64)" />
+
+<button @onclick="@(() => fileService.SendImageBase64(imageBase64))">Enviar Imagen bytes</button>
+<button @onclick="@(() => fileService.SendImageIFormFile(imageBase64))">Enviar Imagen IFileForm</button>
+
+@code {
+    string imageBase64;
+}
